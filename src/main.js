@@ -4,6 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import {Doctor} from './doctor.js';
 
+function stickyFunction() {
+  const navbar = document.getElementById("navbar");
+  let sticky = navbar.offsetTop;
+
+  if(window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+function resetPage() {
+  location.reload();
+}
+
 function displayResults(name, issue) {
   let doctor = new Doctor();
   let promise = doctor.findDoctor(name, issue);
@@ -39,6 +54,10 @@ function displayResults(name, issue) {
 
 $(document).ready(function() {
 
+  window.onscroll = function() {
+    stickyFunction();
+  };
+
   $("#medicalLookupForm").submit((event) => {
     event.preventDefault();
 
@@ -53,6 +72,17 @@ $(document).ready(function() {
     let doctor = $("#doctorSearchInput").val();
     displayResults(doctor, "");
     
+  });
+
+  $("#navSearch").submit((event) => {
+    event.preventDefault();
+
+    let doctor = $("#navInput").val();
+    displayResults(doctor, "");
+  })
+
+  $("#reset").click(function() {
+    resetPage();
   });
 
 });

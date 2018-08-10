@@ -1,6 +1,13 @@
-form {
+.jumbotron form {
   margin: 25px;
   width: 100%;
   padding: 25px;
   border: 1px solid black;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 73%;
+  z-index: 999;
 }
