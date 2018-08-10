@@ -57,14 +57,20 @@ function displayResults(name, issue) {
               <br>
               <h5 id="available${i}" class="card-subtitle"></h5>
               <br>
+              <h5 id="distance${i}" class="card-subtitle"></h5>
+              <br>
               <p class="card-text"><strong>About ${results.data[i].profile.first_name}:</strong></p>
               <p class="card-text">${results.data[i].profile.bio}</p>
               <p class="card-text"><strong>Specialties:</strong></p>
               <ul id="specialties${i}">
               </ul>
+              <a href="${results.data[i].attribution_url}" class="btn btn-primary">Visit Website</a>
             </div>
           </div>
           </div>`);
+
+          const distance = (results.data[i].practices[0].distance).toFixed(2);
+          $("#distance" + i).text("Distance: " + distance)
 
           if(results.data[i].practices[0].accepts_new_patients) {
             $("#available" + i).text("Accepting New Patients");
