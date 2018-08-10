@@ -40,3 +40,8 @@
     opacity: 0;
   }
 }
+
+.card-body {
+  overflow-y: scroll;
+  height: 300px;
+}
