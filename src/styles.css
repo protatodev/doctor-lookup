@@ -62,3 +62,11 @@ hr {
 .resultsDiv {
   display: none;
 }
+
+.font-green {
+  color: green;
+}
+
+.font-red {
+  color: red;
+}
