@@ -24,6 +24,12 @@ function resetPage() {
   location.reload();
 }
 
+function clearInputs() {
+  $("#medicalLookupForm").trigger("reset");
+  $("#doctorLookupForm").trigger("reset");
+  $("#navSearch").trigger("reset");
+}
+
 function displayResults(name, issue) {
   let doctor = new Doctor();
   let promise = doctor.findDoctor(name, issue);
@@ -71,6 +77,7 @@ $(document).ready(function() {
 
     let medicalIssue = $("#medicalSearchInput").val();
     displayResults("", medicalIssue);
+    clearInputs();
   });
 
   $("#doctorLookupForm").submit((event) => {
@@ -78,6 +85,7 @@ $(document).ready(function() {
 
     let doctor = $("#doctorSearchInput").val();
     displayResults(doctor, "");
+    clearInputs();
   });
 
   $("#navSearch").submit((event) => {
@@ -85,6 +93,7 @@ $(document).ready(function() {
 
     let doctor = $("#navInput").val();
     displayResults(doctor, "");
+    clearInputs();
   });
 
   $("#reset").click(function() {
