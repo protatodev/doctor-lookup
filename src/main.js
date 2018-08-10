@@ -40,10 +40,10 @@ function displayResults(name, issue) {
   let promise = doctor.findDoctor(name, issue);
 
   promise.then(results => {
-    console.log(results.data[0]);
     if(results.data.length === 0) {
       $(".errorDiv").hide().fadeIn(1000);
     } else {
+      $(".errorDiv").hide();
       for(let i = 0; i < results.data.length; i++) {
         $(".card-group").append(
           `<div class="col-lg-3">
@@ -64,7 +64,7 @@ function displayResults(name, issue) {
               <p class="card-text"><strong>Specialties:</strong></p>
               <ul id="specialties${i}">
               </ul>
-              <a href="${results.data[i].attribution_url}" class="btn btn-primary">Visit Website</a>
+              <a href="${results.data[i].practices[0].website}" class="btn btn-primary">Visit Website</a>
             </div>
           </div>
           </div>`);
