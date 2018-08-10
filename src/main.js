@@ -30,6 +30,11 @@ function clearInputs() {
   $("#navSearch").trigger("reset");
 }
 
+function clearResults() {
+  $(".col-lg-3").each(() => {
+  }).remove();
+}
+
 function displayResults(name, issue) {
   let doctor = new Doctor();
   let promise = doctor.findDoctor(name, issue);
@@ -42,7 +47,7 @@ function displayResults(name, issue) {
       for(let i = 0; i < results.data.length; i++) {
         $(".card-group").append(
           `<div class="col-lg-3">
-          <div class="card text-white bg-info">
+          <div class="card text-black bg-light">
             <img class="card-img-top" src="${results.data[i].profile.image_url}" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title">${results.data[i].profile.first_name} ${results.data[i].profile.last_name}</h4>
@@ -64,6 +69,7 @@ function displayResults(name, issue) {
           }
       }
     }
+    $(".resultsDiv").hide().fadeIn(1000);
     scrollToView();
   }).catch(error => {
     $(".errorDiv").text(error);
@@ -79,6 +85,7 @@ $(document).ready(function() {
 
   $("#medicalLookupForm").submit((event) => {
     event.preventDefault();
+    clearResults();
 
     let medicalIssue = $("#medicalSearchInput").val();
     displayResults("", medicalIssue);
@@ -87,6 +94,7 @@ $(document).ready(function() {
 
   $("#doctorLookupForm").submit((event) => {
     event.preventDefault();
+    clearResults();
 
     let doctor = $("#doctorSearchInput").val();
     displayResults(doctor, "");
@@ -95,6 +103,7 @@ $(document).ready(function() {
 
   $("#navSearch").submit((event) => {
     event.preventDefault();
+    clearResults();
 
     let doctor = $("#navInput").val();
     displayResults(doctor, "");

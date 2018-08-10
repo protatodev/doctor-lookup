@@ -25,7 +25,6 @@
 }
 
 #resultsJumbo {
-  margin-top: 5px;
   margin-bottom: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -44,4 +43,22 @@
 .card-body {
   overflow-y: scroll;
   height: 300px;
+}
+
+.jumboIntro {
+  margin-bottom: 5px;
+  padding-bottom: 20px;
+}
+
+hr {
+  padding: 1px;
+  margin: 1px;
+}
+
+.entry {
+  margin-bottom: 5px;
+}
+
+.resultsDiv {
+  display: none;
 }

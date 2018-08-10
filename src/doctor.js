@@ -12,7 +12,7 @@ export class Doctor {
                     : url = `https://api.betterdoctor.com/2018-03-01/doctors?location=45.5122,-122.6587,7&query="${medicalIssue}"&skip=0&limit=10&user_key=${process.env.exports.apiKey}`;
       console.log(url);
       request.onload = function() {
-        if(request.status === 200 && request.response != undefined) {
+        if(request.status === 200) {
           let results = JSON.parse(request.response);
           resolve(results);
         } else {
