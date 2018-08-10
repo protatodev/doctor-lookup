@@ -13,7 +13,7 @@ function stickyFunction() {
   const navbar = document.getElementById("navbar");
   let sticky = navbar.offsetTop;
 
-  if(window.pageYOffset >= sticky) {
+  if(window.pageYOffset > sticky) {
     navbar.classList.add("sticky");
   } else {
     navbar.classList.remove("sticky");
@@ -71,7 +71,6 @@ $(document).ready(function() {
 
     let medicalIssue = $("#medicalSearchInput").val();
     displayResults("", medicalIssue);
-    scrollToView();
   });
 
   $("#doctorLookupForm").submit((event) => {
@@ -79,7 +78,6 @@ $(document).ready(function() {
 
     let doctor = $("#doctorSearchInput").val();
     displayResults(doctor, "");
-    scrollToView();
   });
 
   $("#navSearch").submit((event) => {
@@ -87,7 +85,6 @@ $(document).ready(function() {
 
     let doctor = $("#navInput").val();
     displayResults(doctor, "");
-    scrollToView();
   });
 
   $("#reset").click(function() {
