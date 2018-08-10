@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doctor Lookup</title>
+</head>
+<body>
+  <div class="container">
+
+    <!-- SEARCH FORMS -->
+    <div class="jumbotron entry">
+      <h3>Search By Medical Issue</h3>
+      <form id="medicalLookupForm">
+        <div class="form-group">
+          <label for="medicalSearchInput">Enter Medical Issue</label>
+          <input class="form-control" type="text" id="medicalSearchInput" placeholder="e.g, sore throat">
+        </div>
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+      <h3>Search By Doctor Name</h3>
+      <form id="doctorLookupForm">
+        <div class="form-group">
+          <label for="doctorSearchInput">Enter A Doctor's Name</label>
+          <input class="form-control" type="text" id="doctorSearchInput" placeholder="e.g, John Smith">
+        </div>
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+      
+    </div>
+    
+    <!-- SEARCH RESULTS -->
+    <div class="resultsDiv">
+      <div class="jumbotron">
+        <h2>Search Results<small>for Portland, OR</small></h2>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
