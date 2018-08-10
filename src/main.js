@@ -9,23 +9,26 @@ function displayResults(issue, name) {
   let promise = doctor.findDoctor(issue, name);
 
   promise.then(results => {
-    for(let i = 0; i < results.length; i++) {
+    console.log(results.data[0]);
+    for(let i = 0; i < results.data.length; i++) {
       $(".card-group").append(
-        `<div class="card">
-          <img class="card-img-top" data-src=${results[i].data[0].profile.image_url} alt="Card image cap">
+        `<div class="col-lg-3">
+        <div class="card">
+          <img class="card-img-top" src="${results.data[i].profile.image_url}" alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title">${results[i].data[0].profile.first_name} " " ${results[i].data[0].profile.last_name}</h4>
-            <h6 class="card-subtitle text-muted">${results[i].data[0].practices[0].visit_address.city}, ${results[i].data[0].practices[0].visit_address.state}</h6>
-            <h6 class="card-subtitle text-muted">${results[i].data[0].practices[0].visit_address.street}</h6>
-            <p class="card-text">${results[i].data[0].profile.title}</p>
+            <h4 class="card-title">${results.data[i].profile.first_name} " " ${results.data[i].profile.last_name}</h4>
+            <h6 class="card-subtitle text-muted">${results.data[i].practices[0].visit_address.city}, ${results.data[i].practices[0].visit_address.state}</h6>
+            <h6 class="card-subtitle text-muted">${results.data[i].practices[0].visit_address.street}</h6>
+            <p class="card-text">${results.data[i].profile.bio}</p>
             <ul id="specialties${i}">
             </ul>
           </div>
+        </div>
         </div>`);
         
-        for(let j = 0; j < results[i].data[0].specialties.length; j++) {
+        for(let j = 0; j < results.data[i].specialties.length; j++) {
           $("#specialties" + i).append(
-            `<li>${results[i].data[0].specialties.name}</li>`
+            `<li>${results.data[i].specialties[j].name}</li>`
           );
         }
     }
@@ -36,11 +39,19 @@ function displayResults(issue, name) {
 
 $(document).ready(function() {
 
-  $(".medicalLookupForm").submit((event) => {
+  $("#medicalLookupForm").submit((event) => {
     event.preventDefault();
 
     let medicalIssue = $("#medicalSearchInput").val();
     displayResults(medicalIssue, "");
+    
+  });
+
+  $("#doctorLookupForm").submit((event) => {
+    event.preventDefault();
+
+    let doctor = $("#doctorSearchInput").val();
+    displayResults("", doctor);
     
   });
 
