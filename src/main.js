@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import {Doctor} from './doctor.js';
 
-function displayResults(issue, name) {
+function displayResults(name, issue) {
   let doctor = new Doctor();
-  let promise = doctor.findDoctor(issue, name);
+  let promise = doctor.findDoctor(name, issue);
 
   promise.then(results => {
     console.log(results.data[0]);
@@ -16,7 +16,7 @@ function displayResults(issue, name) {
         <div class="card">
           <img class="card-img-top" src="${results.data[i].profile.image_url}" alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title">${results.data[i].profile.first_name} " " ${results.data[i].profile.last_name}</h4>
+            <h4 class="card-title">${results.data[i].profile.first_name} ${results.data[i].profile.last_name}</h4>
             <h6 class="card-subtitle text-muted">${results.data[i].practices[0].visit_address.city}, ${results.data[i].practices[0].visit_address.state}</h6>
             <h6 class="card-subtitle text-muted">${results.data[i].practices[0].visit_address.street}</h6>
             <p class="card-text">${results.data[i].profile.bio}</p>
@@ -43,7 +43,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     let medicalIssue = $("#medicalSearchInput").val();
-    displayResults(medicalIssue, "");
+    displayResults("", medicalIssue);
     
   });
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     let doctor = $("#doctorSearchInput").val();
-    displayResults("", doctor);
+    displayResults(doctor, "");
     
   });
 
